@@ -9,6 +9,9 @@ import Home from './pages/Home'
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme'
 import SignIn from './pages/SignIn'
+import './mock'
+
+
 
 function App() {
 

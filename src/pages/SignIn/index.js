@@ -56,8 +56,18 @@ function CopyRight() {
   );
 }
 
+
+// 1) Chama a API; 2) Se retorno OK!, direciona para Home
+// 3) Se não - exibe mensagem
+//obj promise/promessa - finalidades assincronas(then ou catch)
 function handleSignIN() {
-  axios.get
+  axios.get('https://api.github.com/users/giuliano-amorim')
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log('Algo está errado.')
+    })
 }
 
 

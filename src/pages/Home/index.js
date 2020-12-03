@@ -10,13 +10,16 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
+
   },
   main: {
     height: '100vh',
     padding: 80,
+
   },
   toobar: {
     minHeight: 64,
+
   }
 })
 
@@ -24,9 +27,9 @@ function Home() {
   const classes = useStyles()
 
   return (
-    <div className= {classes.root}>
+    <div className={classes.root}>
       <Header />
-      <div className={classes.toolbar}/>
+      <div className={classes.toolbar} />
       <main className={classes.main}>
         <Container maxWidth='lg'>
           <Box display='flex'>
@@ -36,7 +39,7 @@ function Home() {
         </Container>
       </main>
     </div>
-  
+
   )
 }
 
