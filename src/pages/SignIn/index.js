@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -8,8 +8,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link'
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
-
+import authService from '../../services/authService'
+import FormHelperText from '@material-ui/core/FormHelperText'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,30 +57,34 @@ function CopyRight() {
 }
 
 
-// 1) Chama a API; 2) Se retorno OK!, direciona para Home
-// 3) Se não - exibe mensagem
-//obj promise/promessa - finalidades assincronas(then ou catch)
-function handleSignIN() {
-  axios.get('https://api.github.com/users/giuliano-amorim')
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.log('Algo está errado.')
-    })
-}
-
 
 
 
 function SignIn() {
   const classes = useStyles();
-
   const history = useHistory();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState()
 
-  const handleClick = (handleSignIN) => {
-    history.push("/");
+
+  // 1) Chama a API; 2) Se retorno OK!, direciona para Home
+  // 3) Se não - exibe mensagem
+  //obj promise/promessa - finalidades assincronas(then ou catch)
+  async function handleSignIN() {
+    try {
+      await authService.signIn(email, password)
+      history.push("/");
+    } catch (error) {
+      setErrorMessage(error.response.data.message)
+    }
   }
+
+
+
+
+
+
 
   return (
     <Grid container className={classes.root}>
@@ -120,7 +124,10 @@ function SignIn() {
               label='E-mail'
               name='email'
               autoComplete='email'
-              autoFocus />
+              autoFocus
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
             <TextField
               variant='outlined'
               margin='normal'
@@ -131,9 +138,19 @@ function SignIn() {
               name='password'
               type='password'
               autoComplete='current-password'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
             />
+            {
+              errorMessage &&
+              <FormHelperText error>
+                {errorMessage}
+              </FormHelperText>
+
+
+            }
             <Button
-              onClick={handleClick}
+              onClick={handleSignIN}
               className={classes.button}
               fullWidth
               variant='contained'
