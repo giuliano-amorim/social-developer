@@ -57,9 +57,6 @@ function CopyRight() {
 }
 
 
-
-
-
 function SignIn() {
   const classes = useStyles();
   const history = useHistory();
@@ -81,20 +78,13 @@ function SignIn() {
   }
 
 
-
-
-
-
-
   return (
     <Grid container className={classes.root}>
-      <Grid
-        item
+      <Grid item md={7}
         container
         direction='column'
         justify='center'
         alignItems='center'
-        md={7}
         className={classes.image}>
         <Typography style={{ color: '#008080', fontSize: 24, lineHeight: '10px' }}>
           <strong>A melhor maneira de fazer networking entre desenvolvedores.</strong>

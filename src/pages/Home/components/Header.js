@@ -4,8 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SvgIcon from '@material-ui/core/SvgIcon'
-import {Bell} from 'react-feather'
+import { Bell } from 'react-feather'
 import Avatar from '@material-ui/core/Avatar';
+//import authService from '../../../services/authService'
+
 
 const useStyles = makeStyles({
   appBar: {
@@ -33,35 +35,27 @@ const useStyles = makeStyles({
 
 function Header() {
   const classes = useStyles()
+  const user = null
 
   return (
     <AppBar position='fixed' color='inherit' className={classes.appBar}>
-        <Toolbar>
-          <img src="images/logo.png" alt="logo" className={classes.img}/>
-          <div className={classes.grow}></div>
-          <div className={classes.userSection}>
-            <Button color="primary" variant='contained' className={classes.button}>
-              Novo Post
+      <Toolbar>
+        <img src="images/logo.png" alt="logo" className={classes.img} />
+        <div className={classes.grow}></div>
+        <div className={classes.userSection}>
+          <Button color="primary" variant='contained' className={classes.button}>
+            Novo Post
             </Button>
           <SvgIcon className={classes.bell}>
             <Bell></Bell>
           </SvgIcon>
-          <Avatar alt="imagemAvatar" src="/" />
-          </div>
-    </Toolbar>
+          <Avatar alt="imagemAvatar" src={user && user.avatar} />
+        </div>
+      </Toolbar>
     </AppBar>
   )
-  
+
 }
 
 export default Header
 
-
- {/* // <div> */}
-            // {/* <span>Social Developer</span>
-           
-            // <span>img1</span>
-            // <span>img2</span>
-          
-         
-        // </     
