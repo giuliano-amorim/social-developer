@@ -8,8 +8,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link'
 import { useHistory } from 'react-router-dom';
-import authService from '../../services/authService'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import { useSelector, useDispatch } from 'react-redux'
+import signIn from '../../actions/accountActions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   form: {
-    margin: theme.spacing(2, 4)
-  }
+    margin: theme.spacing(2, 4),
+  },
 
 }))
 
@@ -63,14 +64,17 @@ function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState()
+  const dispatch = useDispatch()
 
+
+  const account = useSelector(state => state)
 
   // 1) Chama a API; 2) Se retorno OK!, direciona para Home
   // 3) Se não - exibe mensagem
   //obj promise/promessa - finalidades assincronas(then ou catch)
   async function handleSignIN() {
     try {
-      await authService.signIn(email, password)
+      await dispatch(signIn(email, password))
       history.push("/");
     } catch (error) {
       setErrorMessage(error.response.data.message)
@@ -80,11 +84,13 @@ function SignIn() {
 
   return (
     <Grid container className={classes.root}>
-      <Grid item md={7}
+      <Grid
+        item
         container
-        direction='column'
-        justify='center'
-        alignItems='center'
+        direction="column"
+        justify="center"
+        alignItems="center"
+        md={7}
         className={classes.image}>
         <Typography style={{ color: '#008080', fontSize: 24, lineHeight: '10px' }}>
           <strong>A melhor maneira de fazer networking entre desenvolvedores.</strong>

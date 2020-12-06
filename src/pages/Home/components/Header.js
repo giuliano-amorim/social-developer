@@ -7,7 +7,7 @@ import SvgIcon from '@material-ui/core/SvgIcon'
 import { Bell } from 'react-feather'
 import Avatar from '@material-ui/core/Avatar';
 //import authService from '../../../services/authService'
-
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
   appBar: {
@@ -35,7 +35,8 @@ const useStyles = makeStyles({
 
 function Header() {
   const classes = useStyles()
-  const user = null
+  const user = useSelector(state => state.user)
+
 
   return (
     <AppBar position='fixed' color='inherit' className={classes.appBar}>
