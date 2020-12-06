@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link'
 import { useHistory } from 'react-router-dom';
 import FormHelperText from '@material-ui/core/FormHelperText'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import signIn from '../../actions/accountActions'
 
 const useStyles = makeStyles((theme) => ({
@@ -66,8 +66,6 @@ function SignIn() {
   const [errorMessage, setErrorMessage] = useState()
   const dispatch = useDispatch()
 
-
-  const account = useSelector(state => state)
 
   // 1) Chama a API; 2) Se retorno OK!, direciona para Home
   // 3) Se não - exibe mensagem

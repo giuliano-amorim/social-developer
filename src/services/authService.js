@@ -1,40 +1,30 @@
 import axios from '../utils/axios'
 
 
-class AuthService {
-  signIn = (email, password) => {
-    return new Promise((resolve, reject) => {
-      axios.post('/api/home/login', { email, password })
-        .then(response => {
-          if (response.data.user) {
-            //this.setUser(response.data.user)
-            resolve(response.data.user)
-          } else {
-            reject(response.data.error)
-          }
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
-  }
+signInWithToken = () => {
+  return new Promise((resolve, reject) => {
+    axios.post('/api/home/me') // envia o token pelo header
+      .then(response => {
+        if (response.data.user) {
+          resolve(response.data.user)
+        } else {
+          reject(response.data.error)
+        }
+      })
+      .catch(error => {
+        reject(error)
+      })
+  })
+}
 
-  setUser = (user) => {
-    localStorage.setItem('user', JSON.stringify(user))
-  }
+setToken = (token) => {
+  localStorage.setItem('accessToken', token)
+}
 
-  getUser = () => {
-    const user = localStorage.getItem('user')
-    if (user) {
-      return JSON.parse(user)
-    }
-    return user
-  }
+getToken = () => localStorage.getItem('accessToken')
 
-  isAuthenticated = () => {
-    return !!this.getUser()
-  }
-
+isAuthenticated = () => {
+  return !!this.getToken()
 }
 
 const authService = new AuthService()

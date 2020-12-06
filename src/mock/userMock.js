@@ -1,10 +1,14 @@
 import mock from '../utils/mock'
 
-// mock.onPost('/api/home/login').reply(200, {
-//   'id': 1,
-//   'username': 'giuliano',
-//   'email': 'eu@eu.com'
-// })
+mock.onPost('/api/home/me').reply(200, {
+  user: {
+
+    'id': 1,
+    'username': 'giuliano',
+    'email': 'eu@eu.com'
+
+  }
+})
 
 
 mock.onPost('/api/home/login').reply((config) => {
