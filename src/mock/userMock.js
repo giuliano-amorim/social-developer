@@ -5,11 +5,11 @@ mock.onPost('/api/home/me').reply(200, {
 
     'id': 1,
     'username': 'giuliano',
-    'email': 'eu@eu.com'
+    'email': 'eu@eu.com',
+    'avatar': "/images/avatars/avatar_1.png",
 
   }
 })
-
 
 mock.onPost('/api/home/login').reply((config) => {
   const { email, password } = JSON.parse(config.data)
