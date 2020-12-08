@@ -29,7 +29,7 @@ function Account() {
 
     // logoff no app atraves de uma action (redux)
     dispatch(signOut())
-    history('/')
+    history.push('/')
   }
 
   return (
