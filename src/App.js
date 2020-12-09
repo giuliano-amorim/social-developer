@@ -14,7 +14,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Auth from './components/Auth'
 
-
 function App() {
 
   return (
@@ -23,9 +22,8 @@ function App() {
         <Auth>
           <Router>
             <Switch>
-              <Route exact path='/' component={() => <Home />} />
-              <GuestRoute exact path='/sign-in' component={() => <SignIn />} />
-              <Route exact path='*' component={() => <h1>Página não encontrada 404</h1>} />
+              <GuestRoute exact path='/sign-in' component={<SignIn />} />
+              <Route exact path='//*' component={<Home />} />
             </Switch>
           </Router>
         </Auth>

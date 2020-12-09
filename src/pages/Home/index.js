@@ -1,10 +1,15 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import Feed from '../Feed'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import Header from './components/Header'
-import Feed from './components/Feed'
-import NavBar from './components/Navbar'
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import NewPost from '../Post/New'
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -31,15 +36,16 @@ function Home() {
       <Header />
       <div className={classes.toolbar} />
       <main className={classes.main}>
-        <Container maxWidth='lg'>
-          <Box display='flex'>
-            <NavBar />
-            <Feed />
-          </Box>
-        </Container>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={<Feed />} />
+            <Route exact path='/feed' component={<Feed />} />
+            <Route exact path='/post/new' component={NewPost} />
+            <Route exact path='*' component={() => <h1>Página não encontrada 404</h1>} />
+          </Switch>
+        </Router>
       </main>
     </div>
-
   )
 }
 

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     width: 275,
     marginRight: theme.spacing(2),
-    
+
   },
   button: {
     width: '100%',
@@ -20,31 +20,31 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const tags = [
-  { id: 1, name: 'mongoDb'},
-  { id: 2, name: 'react'},
-  { id: 3, name: 'javaScript'},
-  { id: 4, name: 'express'},
-  { id: 5, name: 'nodeJs'},
+  { id: 1, name: 'mongoDb' },
+  { id: 2, name: 'react' },
+  { id: 3, name: 'javaScript' },
+  { id: 4, name: 'express' },
+  { id: 5, name: 'nodeJs' },
 ]
 
 
 function NavBar() {
   const classes = useStyles();
   return (
-<Paper className={classes.root}>
-  <Button variant='outlined' color='secondary' className={classes.button}>Registrar grátis</Button>
-  <ListSubheader>{'tags'}</ListSubheader>
-  {
-    tags.map((item)=> (
-      <ListItem dense button key={`item-${item.id}-${item.name}`}>
-        <ListItemText primary={`#${item.name}`} />
-      </ListItem>
-    ))
-  }
-  <ListItem button>
-    Outras tags
+    <Paper className={classes.root}>
+      <Button variant='outlined' color='secondary' className={classes.button}>Registrar grátis</Button>
+      <ListSubheader>{'tags'}</ListSubheader>
+      {
+        tags.map((item) => (
+          <ListItem dense button key={`item-${item.id}-${item.name}`}>
+            <ListItemText primary={`#${item.name}`} />
+          </ListItem>
+        ))
+      }
+      <ListItem button>
+        Outras tags
   </ListItem>
-</Paper>
+    </Paper>
 
   )
 }

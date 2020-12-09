@@ -1,16 +1,18 @@
 import React from 'react'
-import {makeStyles} from '@material-ui/styles'
-import PostCard from '../../../components/PostCard/index'
+import { makeStyles } from '@material-ui/styles'
+import PostCard from '../../components/PostCard'
+import NavBar from './NavBar'
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles((theme) =>({
-  root: {
 
-  }
-})) 
+const useStyles = makeStyles(() => ({
+  root: {}
+}))
 
 const posts = [
   {
-    id: 1, 
+    id: 1,
     author: {
       id: 1,
       name: "Giuliano Amorim",
@@ -22,9 +24,9 @@ const posts = [
     description: "O que vocês estão achando do projeto?",
     hashtags: "#javascript, #reactjs, #express, #mongodb",
     image: "/images/posts/post_1.jpg"
-},
+  },
   {
-    id: 2, 
+    id: 2,
     author: {
       id: 2,
       name: "Leonardo Amorim",
@@ -36,21 +38,25 @@ const posts = [
     description: "Hello son",
     hashtags: "#son, #family, #express, #mongodb",
     image: "/images/posts/post_2.jpeg",
-}]
+  }]
 
-export default (post) => {
-
+function Feed() {
   const classes = useStyles();
 
   return (
-<div className={classes.root}>
-  {
-    posts.map(post =>  (
-      <PostCard key={post.id} post={post} />
-    ))
-  }
-
-</div>
-
+    <Container maxWidth='lg'>
+      <Box display='flex'>
+        <NavBar />
+        <div className={classes.root}>
+          {
+            posts.map(post => (
+              <PostCard key={post.id} post={post} />
+            ))
+          }
+        </div>
+      </Box>
+    </Container>
   )
 }
+
+export default Feed
