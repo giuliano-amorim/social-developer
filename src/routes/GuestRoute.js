@@ -1,24 +1,17 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Home from '../pages/Home'
 import { useSelector } from 'react-redux'
 
 
-function GuestRoute({ props, ...rest }) {
+function GuestRoute({ props: Component, ...rest }) {
   const account = useSelector(state => state.account)
   const isAuthenticated = Boolean(account.user)
 
 
-  console.log(isAuthenticated)
-  return (
-    < Route {...rest} props={(
-      isAuthenticated
-        ? <Home {...rest} />
-        : <Redirect to='/sign-in' />
-    )} />
-
-
-  )
+  return <Route {...rest} props={isAuthenticated ? <Home /> : Component} />;
 }
+
+
 
 export default GuestRoute

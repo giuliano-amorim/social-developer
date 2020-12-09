@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Header from './components/Header'
+import Header from './Header'
 import NewPost from '../Post/New'
 
 
@@ -38,8 +38,8 @@ function Home() {
       <main className={classes.main}>
         <Router>
           <Switch>
-            <Route exact path='/' component={<Feed />} />
-            <Route exact path='/feed' component={<Feed />} />
+            <Route exact path='/' component={Feed} />
+            <Route exact path='/feed' component={Feed} />
             <Route exact path='/post/new' component={NewPost} />
             <Route exact path='*' component={() => <h1>Página não encontrada 404</h1>} />
           </Switch>

@@ -22,8 +22,8 @@ function App() {
         <Auth>
           <Router>
             <Switch>
-              <GuestRoute exact path='/sign-in' component={<SignIn />} />
-              <Route exact path='//*' component={<Home />} />
+              <GuestRoute exact path='/sign-in' component={SignIn} />
+              <Route exact path='/*' component={Home} />
             </Switch>
           </Router>
         </Auth>

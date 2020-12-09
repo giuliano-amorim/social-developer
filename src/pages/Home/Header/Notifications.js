@@ -10,7 +10,7 @@ import {
   Heart as HeartIcon,
   Users as ConnectionIcon,
 } from 'react-feather'
-import { getNotifications } from '../../../../actions/notificationsActions'
+import { getNotifications } from '../../../actions/notificationsActions'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import List from '@material-ui/core/List';
