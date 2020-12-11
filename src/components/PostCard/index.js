@@ -41,35 +41,35 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function PostCard ({post}) {
+function PostCard({ post }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardHeader 
-      avatar={<Avatar src={post.author.avatar} />}
-      title={<Typography variant="h6">{post.title}</Typography>}
-      subheader={
-        <div className={classes.subheader}>
-        <Typography className={classes.caption} variant='caption'>
-          {'Avaliado por'}
-        </Typography>
-        <Typography className={classes.caption} variant='subtitle2'>
-          {post.author.name}
-        </Typography>
-        <Typography className={classes.caption} variant='caption'>
-          {post.date}
-        </Typography>
-        </div>} />
+      <CardHeader
+        avatar={<Avatar src={post.author.avatar} />}
+        title={<Typography variant="h6">{post.title}</Typography>}
+        subheader={
+          <div className={classes.subheader}>
+            <Typography className={classes.caption} variant='caption'>
+              {'Avaliado por'}
+            </Typography>
+            <Typography className={classes.caption} variant='subtitle2'>
+              {post.author.name}
+            </Typography>
+            <Typography className={classes.caption} variant='caption'>
+              {post.date}
+            </Typography>
+          </div>} />
 
       <CardContent className={classes.content}>
-        <Typography 
-        className={classes.message}
-        variant='body1'>
+        <Typography
+          className={classes.message}
+          variant='body1'>
           {post.hashtags}
         </Typography>
         <CardActionArea className={classes.image} alt='img'>
-          <img src={post.image} />
+          <img src={post.image} alt='seila' />
         </CardActionArea>
       </CardContent>
 
@@ -77,19 +77,19 @@ function PostCard ({post}) {
       <CardActions disableSpacing>
         <IconButton aria-label='like'>
           <FavoriteIcon />
-          <Typography 
-            style= {{cursor: 'pointer'}}
+          <Typography
+            style={{ cursor: 'pointer' }}
             color='textSecondary'
             variant='body2'>
             {'27'}
-            </Typography>
+          </Typography>
         </IconButton>
         <IconButton aria-label='comment'>
           <MessageIcon />
           <Typography
-          className={classes.reactions}
-          color='textSecondary'
-          variant='body2'>
+            className={classes.reactions}
+            color='textSecondary'
+            variant='body2'>
             {'25'}
           </Typography>
         </IconButton>
@@ -100,7 +100,7 @@ function PostCard ({post}) {
     </Card>
 
   )
-  
+
 }
 
 export default PostCard;

@@ -87,10 +87,10 @@ function Notifications() {
           </Box>
           <List>
             {
-              notifications.map((notification) => {
+              notifications.map((notification, index) => {
                 const Icon = iconsMap[notification.type]
                 return (
-                  <ListItem>
+                  <ListItem key={index}>
                     <ListItemAvatar>
                       <Avatar className={classes.icon}>
                         <SvgIcon>

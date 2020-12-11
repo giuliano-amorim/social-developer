@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import history from './config/history'
 import Home from './pages/Home'
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme'
@@ -14,13 +15,14 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Auth from './components/Auth'
 
+
 function App() {
 
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Auth>
-          <Router>
+          <Router history={history}>
             <Switch>
               <GuestRoute exact path='/sign-in' component={SignIn} />
               <Route exact path='/*' component={Home} />

@@ -4,6 +4,9 @@ import Home from '../pages/Home'
 import { useSelector } from 'react-redux'
 
 
+
+
+
 function GuestRoute({ props: Component, ...rest }) {
   const account = useSelector(state => state.account)
   const isAuthenticated = Boolean(account.user)

@@ -1,32 +1,30 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Feed from '../Feed'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import history from '../../config/history'
 import Header from './Header'
 import NewPost from '../Post/New'
+import Feed from '../Feed'
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-
+    backgroundColor: theme.palette.background.dark,
   },
   main: {
-    height: '100vh',
-    padding: 80,
-
+    padding: 24,
   },
-  toobar: {
+  toolbar: {
     minHeight: 64,
-
-  }
-})
+  },
+}));
 
 function Home() {
   const classes = useStyles()
@@ -36,7 +34,7 @@ function Home() {
       <Header />
       <div className={classes.toolbar} />
       <main className={classes.main}>
-        <Router>
+        <Router history={history}>
           <Switch>
             <Route exact path='/' component={Feed} />
             <Route exact path='/feed' component={Feed} />

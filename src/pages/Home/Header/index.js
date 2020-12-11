@@ -36,9 +36,9 @@ function Header() {
         <div className={classes.grow}></div>
         <div className={classes.userSection}>
           <WritePost />
-          <box ml={2}>
+          <Box ml={2}>
             <Notifications />
-          </box>
+          </Box>
           <Box ml={2}>
             <Account />
           </Box>
